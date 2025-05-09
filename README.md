@@ -82,5 +82,15 @@ Open5GS: https://open5gs.org
 
 UERANSIM: https://github.com/aligungr/UERANSIM
 
+### Changes in configuration files of Open5GS 5GC C-Plane
+
+The following parameters can be used in the logic that selects UPF as the connection destination by PFCP.
+
+- DNN
+- TAC (Tracking Area Code)
+- nr_CellID
+
+
+
 
 
