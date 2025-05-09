@@ -17,8 +17,73 @@ Starts all services: open5gs, mongodb, ueransim, hss, pcf, smf, upf
 
 Each component runs from a pre-built Docker image (e.g., open5gs/open5gs)
 
-Configuration files like amf.yaml, smf.yaml, and ue0_telia.yaml define the settings
+Configuration files like amf.yaml, smf.yaml, and ue0.yaml define the settings
 
+📦 2. Configurations define network functionality
+
+No custom Python/JavaScript/Go code
+
+All settings live in *.yaml and *.json files
+
+Examples:
+
+smf.yaml: defines DNNs and IP ranges
+
+ue0_telia.yaml: specifies the UE’s IMSI and APNs
+
+mongo/subscribers_*.json: contains subscriber entries for MongoDB
+
+The test environment (Open5GS + UERANSIM) automatically builds tunneling during bearer setup using GTP-U (GPRS Tunneling Protocol – User Plane) and PFCP. Here’s a detailed description of what happens when a bearer is established and a tunnel is created:
+
+📦 1. UE sends a PDU Session Establishment Request
+
+The UERANSIM UE sends a PDU Session Establishment Request message to the AMF
+
+The APN (DNN) determines the type of traffic (e.g., ims, internet)
+
+🔄 2. AMF forwards the request to the SMF
+
+The AMF passes the request over the SBI interface (N11) to the SMF
+
+🧠 3. SMF selects a UPF and initiates tunneling
+
+SMF chooses the UPF by its PFCP address (e.g., 127.0.0.7)
+
+Uses PFCP (Packet Forwarding Control Protocol) over N4 to start the tunnel
+
+text
+Copy
+Edit
+SMF → UPF: PFCP Session Establishment Request
+🌐 4. UPF creates the GTP-U tunnel
+
+UPF replies with a PFCP Session Establishment Response
+
+It sets up interfaces, for example:
+
+ogstun (internet)
+
+ogstun2 (ims)
+
+It binds the PDU address (e.g., 10.244.0.2) into the tunnel
+
+🔀 5. GTP-U user-plane traffic
+
+UE and UPF exchange packets over GTP-U (UDP/2152)
+
+The tunnel path looks like:
+
+text
+Copy
+Edit
+UE → gNB (UERANSIM) → UPF → ogstun/ogstun2 → DN (Data Network)
+🧰 How this works in the test environment:
+
+Component	Role
+UERANSIM	Simulates the gNB and sends NAS + GTP signaling
+SMF.yaml	Defines DNNs, IP ranges, and the UPF’s PFCP address
+UPF.yaml	Configures the GTP-U IP, ogstun interface, and subnet settings
+docker-compose.yaml	Launches SMF and UPF together in a compatible configuration
 
 
 ## 🔧 Components
