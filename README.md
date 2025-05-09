@@ -29,7 +29,7 @@ Examples:
 
 smf.yaml: defines DNNs and IP ranges
 
-ue0_telia.yaml: specifies the UE’s IMSI and APNs
+ue0.yaml: specifies the UE’s IMSI and APNs
 
 mongo/subscribers_*.json: contains subscriber entries for MongoDB
 
