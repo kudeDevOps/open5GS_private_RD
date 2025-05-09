@@ -3,9 +3,23 @@
 
 # 📡 Open5GS + UERANSIM 5G SA & VoLTE Test Network
 
-This project contains a complete 5G Standalone (SA) core network using Open5GS, along with UERANSIM to simulate UE and gNodeB functionality. Configured with Finland’s MCC/MNC values (**244 / 91**) and supports VoLTE traffic simulation.
+This project contains a complete 5G Standalone (SA) core network using Open5GS, along with UERANSIM to simulate UE and gNodeB functionality. Configured with MCC/MNC values (**244 / 91**) and supports VoLTE traffic simulation. This 5G SA test network runs entirely on ready-made configuration files and a Docker Compose setup.
 
----
+# How does this environment work?
+
+🧱 1. Docker Compose orchestrates the entire network
+
+Command: docker-compose up -d
+
+What it does:
+
+Starts all services: open5gs, mongodb, ueransim, hss, pcf, smf, upf
+
+Each component runs from a pre-built Docker image (e.g., open5gs/open5gs)
+
+Configuration files like amf.yaml, smf.yaml, and ue0_telia.yaml define the settings
+
+
 
 ## 🔧 Components
 
