@@ -52,9 +52,6 @@ This project contains a complete 5G Standalone (SA) core network using Open5GS, 
 └── README.md
 
 
-
----
-
 ## ▶️ Startup
 
 ```bash
