@@ -1,0 +1,23 @@
+
+supi: 'imsi-244910000000002'
+mcc: '244'
+mnc: '91'
+protectionScheme: 0
+key: '465B5CE8B199B49FAA5F0A2EE238A6BC'
+opc: 'E8ED289DEBA952E4283B54E88E6183CA'
+amf: '8000'
+imei: '356938035643804'
+imeiSv: '0035600000000001'
+integrity: [NIA2, NIA1, NIA0]
+ciphering: [NEA0, NEA1, NEA2]
+gnbSearchList:
+  - 127.0.0.5
+sessions:
+  - type: 'IPv4'
+    apn: 'ims'
+    slice:
+      sst: 1
+  - type: 'IPv4'
+    apn: 'internet'
+    slice:
+      sst: 1

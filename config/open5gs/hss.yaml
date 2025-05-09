@@ -1,0 +1,8 @@
+
+hss:
+  freeDiameter: /etc/open5gs/freediameter/hss.conf
+  s6a:
+    - addr: 127.0.0.8
+  database:
+    name: open5gs
+    url: mongodb://mongodb/open5gs

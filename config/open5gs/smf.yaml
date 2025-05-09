@@ -1,0 +1,28 @@
+
+smf:
+  sbi:
+    - addr: 127.0.0.4
+      port: 7777
+  pfcp:
+    - addr: 127.0.0.4
+  gtpu:
+    - addr: 127.0.0.4
+  metrics:
+    - addr: 127.0.0.4
+      port: 9090
+  session:
+    - subnet: 10.244.0.1/16
+      dnn: internet
+    - subnet: 10.244.2.1/24
+      dnn: ims
+  dnn:
+    - name: internet
+      dns:
+        - 8.8.8.8
+        - 8.8.4.4
+      mtu: 1400
+    - name: ims
+      dns:
+        - 8.8.8.8
+        - 8.8.4.4
+      mtu: 1400

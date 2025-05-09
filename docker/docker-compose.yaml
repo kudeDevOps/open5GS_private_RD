@@ -1,0 +1,104 @@
+
+version: '3.8'
+
+networks:
+  open5gs-net:
+    driver: bridge
+
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: mongodb
+    networks:
+      - open5gs-net
+    
+  pcf:
+    image: open5gs/open5gs:v2.6.9
+    container_name: pcf
+    networks:
+      - open5gs-net
+    depends_on:
+      - mongodb
+    volumes:
+      - ./config/open5gs:/etc/open5gs
+
+volumes:
+      - mongodb-data:/data/db
+
+  open5gs:
+    image: open5gs/open5gs:v2.6.9
+    container_name: open5gs
+    depends_on:
+      - mongodb
+    networks:
+      - open5gs-net
+    
+  pcf:
+    image: open5gs/open5gs:v2.6.9
+    container_name: pcf
+    networks:
+      - open5gs-net
+    depends_on:
+      - mongodb
+    volumes:
+      - ./config/open5gs:/etc/open5gs
+
+volumes:
+      - ./config/open5gs:/etc/open5gs
+    ports:
+      - "3000:3000"
+      - "7777:7777/udp"
+
+  ueransim:
+    image: ghcr.io/aligungr/ueransim:v3.2.6
+    container_name: ueransim
+    networks:
+      - open5gs-net
+    
+  pcf:
+    image: open5gs/open5gs:v2.6.9
+    container_name: pcf
+    networks:
+      - open5gs-net
+    depends_on:
+      - mongodb
+    volumes:
+      - ./config/open5gs:/etc/open5gs
+
+volumes:
+      - ./config/ueransim:/ueransim/config
+
+  hss:
+    image: open5gs/open5gs:v2.6.9
+    container_name: hss
+    networks:
+      - open5gs-net
+    depends_on:
+      - mongodb
+    
+  pcf:
+    image: open5gs/open5gs:v2.6.9
+    container_name: pcf
+    networks:
+      - open5gs-net
+    depends_on:
+      - mongodb
+    volumes:
+      - ./config/open5gs:/etc/open5gs
+
+volumes:
+      - ./config/open5gs:/etc/open5gs
+
+
+  pcf:
+    image: open5gs/open5gs:v2.6.9
+    container_name: pcf
+    networks:
+      - open5gs-net
+    depends_on:
+      - mongodb
+    volumes:
+      - ./config/open5gs:/etc/open5gs
+
+volumes:
+  mongodb-data:
