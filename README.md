@@ -3,7 +3,7 @@
 
 # 📡 Open5GS + UERANSIM 5G SA & VoLTE Test Network
 
-This project contains a complete 5G Standalone (SA) core network using Open5GS, along with UERANSIM to simulate UE and gNodeB functionality. Configured with Telia Finland’s MCC/MNC values (**244 / 91**) and supports VoLTE traffic simulation.
+This project contains a complete 5G Standalone (SA) core network using Open5GS, along with UERANSIM to simulate UE and gNodeB functionality. Configured with Finland’s MCC/MNC values (**244 / 91**) and supports VoLTE traffic simulation.
 
 ---
 
