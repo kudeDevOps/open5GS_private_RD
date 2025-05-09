@@ -90,6 +90,8 @@ The following parameters can be used in the logic that selects UPF as the connec
 - TAC (Tracking Area Code)
 - nr_CellID
 
+###
+![image](https://github.com/user-attachments/assets/861d2af6-5792-460f-86e0-14400cf1a6b0)
 
 
 
